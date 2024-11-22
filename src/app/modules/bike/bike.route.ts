@@ -4,5 +4,6 @@ import { bikeControllers } from "./bike.controller";
 const router = express.Router();
 
 router.post("/", bikeControllers.createBike);
+router.get("/:productId", bikeControllers.getSingleBike);
 
 export const bikeRoutes = router;
