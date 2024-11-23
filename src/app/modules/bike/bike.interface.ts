@@ -1,4 +1,4 @@
-interface Bike {
+export default interface Bike {
   name: string;
   brand: string;
   price: number;
@@ -10,5 +10,3 @@ interface Bike {
   updatedAt: Date;
   isDeleted: boolean;
 }
-
-export default Bike;
