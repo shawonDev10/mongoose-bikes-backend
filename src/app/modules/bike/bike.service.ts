@@ -11,8 +11,8 @@ const getAllBikesFromDB = async () => {
   return result;
 };
 
-const getSingleBikeFromDB = async (id: string) => {
-  const result = await BikeModel.findOne({ _id: id });
+const getSingleBikeFromDB = async (_id: string) => {
+  const result = await BikeModel.findOne({ _id });
   return result;
 };
 
@@ -45,10 +45,16 @@ const updateABikeFromDB = async (_id: string, value: object) => {
   return result;
 };
 
+const deleteBikeFromDB = async (_id: string) => {
+  const result = await BikeModel.updateOne({ _id }, { isDeleted: true });
+  return result;
+};
+
 export const bikeServices = {
   createStudentIntoDB,
   getAllBikesFromDB,
   getSingleBikeFromDB,
   getSearchBikeFromDB,
   updateABikeFromDB,
+  deleteBikeFromDB,
 };

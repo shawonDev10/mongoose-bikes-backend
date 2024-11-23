@@ -36,11 +36,25 @@ const BikeSchema = new Schema<Bike>(
       type: Boolean,
       required: true,
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
   },
 );
+
+BikeSchema.pre("find", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
+BikeSchema.pre("findOne", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
 
 const BikeModel = model<Bike>("bike", BikeSchema);
 

@@ -8,6 +8,7 @@ interface Bike {
   inStock: boolean;
   createdAt: Date;
   updatedAt: Date;
+  isDeleted: boolean;
 }
 
 export default Bike;
