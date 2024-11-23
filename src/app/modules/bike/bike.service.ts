@@ -27,9 +27,28 @@ const getSearchBikeFromDB = async (text: string) => {
   return result;
 };
 
+const updateABikeFromDB = async (_id: string, value: object) => {
+  const bikeDocument = await BikeModel.findOne({ _id });
+  if (!bikeDocument) {
+    throw new Error("document not found");
+  }
+
+  for (const field of Object.keys(value)) {
+    if (!(field in bikeDocument.toObject())) {
+      throw new Error(`field ${field} does not exist in the document`);
+    }
+  }
+  const result = await BikeModel.findOneAndUpdate({ _id }, value, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
 export const bikeServices = {
   createStudentIntoDB,
   getAllBikesFromDB,
   getSingleBikeFromDB,
   getSearchBikeFromDB,
+  updateABikeFromDB,
 };

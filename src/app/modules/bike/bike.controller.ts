@@ -79,8 +79,29 @@ const getSingleBike = async (req: Request, res: Response) => {
   }
 };
 
+const updateABike = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const newValue = req.body;
+    const result = await bikeServices.updateABikeFromDB(productId, newValue);
+
+    res.status(200).json({
+      message: "Bike retrieved successfully",
+      success: true,
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      message: err.message,
+      success: false,
+      error: err,
+    });
+  }
+};
+
 export const bikeControllers = {
   createBike,
   getBikes,
   getSingleBike,
+  updateABike,
 };
