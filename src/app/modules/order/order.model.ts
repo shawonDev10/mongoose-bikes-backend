@@ -8,8 +8,8 @@ const OrderSchema = new Schema<Order>(
       required: [true, "email is required"],
     },
     product: {
-      type: String,
-      required: [true, "product is required"],
+      type: Schema.Types.ObjectId,
+      required: [true, "product id is required"],
     },
     quantity: {
       type: Number,

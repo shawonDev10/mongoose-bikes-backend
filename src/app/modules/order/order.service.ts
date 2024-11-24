@@ -5,7 +5,7 @@ import orderModel from "./order.model";
 const createOrderIntoDB = async (order: Order) => {
   const { product, quantity } = order;
 
-  const bikeDoc = await bikeServices.getSingleBikeFromDB(product);
+  const bikeDoc = await bikeServices.getSingleBikeFromDB(product.toString());
 
   if (!bikeDoc) {
     throw new Error("document not found");
@@ -28,12 +28,9 @@ const createOrderIntoDB = async (order: Order) => {
 const getRevenueFromOrder = async () => {
   const result = await orderModel.aggregate([
     {
-      $addFields: { bikeObjId: { $toObjectId: "$product" } },
-    },
-    {
       $lookup: {
         from: "bikes",
-        localField: "bikeObjId",
+        localField: "product",
         foreignField: "_id",
         as: "bikeDetails",
       },

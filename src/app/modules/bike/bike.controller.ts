@@ -14,7 +14,7 @@ const createBike = async (req: Request, res: Response) => {
     });
   } catch (err: any) {
     res.status(500).json({
-      message: err.message,
+      message: err._message,
       success: false,
       error: err,
       stack: err.stack,
@@ -54,7 +54,7 @@ const getBikes = async (req: Request, res: Response) => {
     }
   } catch (err: any) {
     res.status(500).json({
-      message: err.message,
+      message: err._message,
       success: false,
       error: err,
       stack: err.stack,
@@ -74,7 +74,7 @@ const getSingleBike = async (req: Request, res: Response) => {
     });
   } catch (err: any) {
     res.status(500).json({
-      message: err.message,
+      message: err._message,
       success: false,
       error: err,
       stack: err.stack,
@@ -95,7 +95,7 @@ const updateABike = async (req: Request, res: Response) => {
     });
   } catch (err: any) {
     res.status(500).json({
-      message: err.message,
+      message: err._message,
       success: false,
       error: err,
       stack: err.stack,
@@ -117,7 +117,7 @@ const deleteBike = async (req: Request, res: Response) => {
     }
   } catch (err: any) {
     res.status(500).json({
-      message: err.message,
+      message: err._message,
       success: false,
       error: err,
       stack: err.stack,

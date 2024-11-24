@@ -13,7 +13,7 @@ app.use("/api/products", bikeRoutes);
 app.use("/api/orders", orderRoutes);
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
+  res.send("Bike Store Is Running");
 });
 
 export default app;
