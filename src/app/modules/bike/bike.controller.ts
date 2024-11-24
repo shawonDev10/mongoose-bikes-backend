@@ -14,9 +14,10 @@ const createBike = async (req: Request, res: Response) => {
     });
   } catch (err: any) {
     res.status(500).json({
-      message: err._message,
+      message: err.message,
       success: false,
       error: err,
+      stack: err.stack,
     });
   }
 };
@@ -56,6 +57,7 @@ const getBikes = async (req: Request, res: Response) => {
       message: err.message,
       success: false,
       error: err,
+      stack: err.stack,
     });
   }
 };
@@ -75,6 +77,7 @@ const getSingleBike = async (req: Request, res: Response) => {
       message: err.message,
       success: false,
       error: err,
+      stack: err.stack,
     });
   }
 };
@@ -86,7 +89,7 @@ const updateABike = async (req: Request, res: Response) => {
     const result = await bikeServices.updateABikeFromDB(productId, newValue);
 
     res.status(200).json({
-      message: "Bike retrieved successfully",
+      message: "Bike updated successfully",
       success: true,
       data: result,
     });
@@ -95,6 +98,7 @@ const updateABike = async (req: Request, res: Response) => {
       message: err.message,
       success: false,
       error: err,
+      stack: err.stack,
     });
   }
 };
@@ -106,7 +110,7 @@ const deleteBike = async (req: Request, res: Response) => {
 
     if (result) {
       res.status(200).json({
-        message: "Bike retrieved successfully",
+        message: "Bike deleted successfully",
         success: true,
         data: {},
       });
@@ -116,6 +120,7 @@ const deleteBike = async (req: Request, res: Response) => {
       message: err.message,
       success: false,
       error: err,
+      stack: err.stack,
     });
   }
 };

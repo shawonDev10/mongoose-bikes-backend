@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { bikeRoutes } from "./app/modules/bike/bike.route";
-import { orderRoutes } from "./app/modules/order/roder.route";
+import { orderRoutes } from "./app/modules/order/order.route";
 const app: Application = express();
 
 // Parsers
